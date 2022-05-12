@@ -10,7 +10,7 @@ Please find our anonymized data from [here](https://github.com/EpitPaper/main/re
 
 Each file corresponds to a parallel run, with filename in the format of `{tool_id}-{app_id}-{run_id}.7z`, where `tool_id` can be any of `monkey`, `ape`, and `wctester`, while `run_id` can be any of `b`, `pM`, and `pW`, corresponding to a baseline run, a machine-time constrained parallel run, and a wait-time constrained parallel run.
 
-Each 7zip file contains several folders. If a folder's name contains a number (e.g., `monkey-quizlet-pMr2`), the folder corresponds to a partial run. If not (e.g., `monkey-quizlet-pM`), the folder contains meta information regarding the parallel run.
+Each 7zip file contains several folders. If a folder's name contains a number (e.g., `monkey-quizlet-pMr2`), the folder corresponds to a partial run (and the number correspondings to the ID of the partial run). If not (e.g., `monkey-quizlet-pM`), the folder contains meta information regarding the parallel run.
 
 ## Format of partial run data
 
@@ -41,4 +41,16 @@ The meanings of files are as follows (taken from [VET's repository](https://gith
 
 ## Format of parallel run meta data
 
-
+- `info.json` contains timing information about the parallel run. Specifically:
+  - `ct` records how many partial runs are in this parallel run.
+  - `inst` is a map between partial run IDs and their correspinding information. Specifically:
+    * `alloc` denotes how much time has been allocated for this partial run, in seconds.
+    * `start` denotes the unix timestamp of when the partial run starts.
+    * `end` shows the unix timestamp of when the partial run stops. If the key is missing then the run has used up all its allocated time.
+    * `prev` shows which partial run is the current run forked from (due to new entrypoints or Exploration Space Partition mitigation). `0` means that the partial run is not forked from any other run.
+  - `start` denotes the unix timestamp of when the parallel run starts.
+  - The following keys are only available in machine-time constrained parallel runs:
+    * `max` denotes at most how much time should be allocated to a new partial run. Should be `3600` in all cases.
+    * `max_inst` denotes at most how many instances can be allocated to perform partial runs concurrently. Should be `5` in all cases.
+    * `rem` denotes how much machine time is left. Should be `0` in all cases.
+- `xpaths` folder contains descriptors of entrypoints to be disabled during testing.
