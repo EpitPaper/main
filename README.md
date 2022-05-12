@@ -54,3 +54,5 @@ The meanings of files are as follows (taken from [VET's repository](https://gith
     * `max_inst` denotes at most how many instances can be allocated to perform partial runs concurrently. Should be `5` in all cases.
     * `rem` denotes how much machine time is left. Should be `0` in all cases.
 - `xpaths` folder contains descriptors of entrypoints to be disabled during testing.
+  - Each filename should have the form of `none-{weight}-{timestamp}.json`. For each entrypoint, when and only when the total amount of weight reaches 100, it will be broadcasted for mitigation. In the dataset there should be only two values of `weight`, 50 and 100.
+  - Each file contains the descriptors of one or more entrypoints in the form of UI XPaths, each of which being a sequence of UI element property selectors to iteratively quantify the matching UI element inside a UI hierarchy.
