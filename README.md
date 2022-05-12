@@ -1,5 +1,7 @@
 # Artifacts for the EPIT paper submission
 
+*Incomplete. Will be updated with more data and explanations!*
+
 Please find our anonymized traces from [here](https://github.com/EpitPaper/main/releases/tag/ase2022).
 
 Each filename is in `{tool_id}-{app_id}-{run_id}.7z`, where `tool_id` can be any of `monkey`, `ape`, and `wctester`, while `run_id` can be any of `b`, `pM`, and `pW`, corresponding to a baseline run, a machine-time constrained parallel run, and a wait-time constrained parallel run.
