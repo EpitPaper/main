@@ -1,7 +1,5 @@
 # Artifacts for the EPIT paper submission
 
-*Incomplete. Will be updated with more data and explanations!*
-
 ## Obtaining raw experimental data
 
 Please find our anonymized data from [here](https://github.com/EpitPaper/main/releases/tag/ase2022). Please note that although we have tried our best to anonymize our data, it could still be possible to find the author(s)' identity by digging deep into the data.
